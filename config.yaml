@@ -1,0 +1,23 @@
+db:
+  user: "postgres"
+  password: "12345"
+  host: "localhost"
+  port: 5432
+  name: "iotdb"
+
+sensors:
+  - name: Temperature
+    type: temperature
+    unit: "&deg;C"
+    min: 20
+    max: 30
+  - name: Humidity
+    type: humidity
+    unit: "%"
+    min: 40
+    max: 70
+  - name: Light
+    type: light
+    unit: "lx"
+    min: 100
+    max: 800

@@ -1,0 +1,76 @@
+2025-09-14 18:48:42 NZST LOG:  database system was shut down at 2025-09-14 18:48:05 NZST
+2025-09-14 18:50:58 NZST FATAL:  database "12345" does not exist
+2025-09-14 18:51:16 NZST ERROR:  unrecognized configuration parameter "databases"
+2025-09-14 18:51:16 NZST STATEMENT:  show databases;
+2025-09-14 18:51:20 NZST ERROR:  unrecognized configuration parameter "database"
+2025-09-14 18:51:20 NZST STATEMENT:  show database;
+2025-09-14 18:51:27 NZST ERROR:  syntax error at or near "desc" at character 1
+2025-09-14 18:51:27 NZST STATEMENT:  desc databases;
+2025-09-14 18:53:42 NZST LOG:  checkpoint starting: time
+2025-09-14 18:53:42 NZST LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.016 s, sync=0.008 s, total=0.071 s; sync files=2, longest=0.004 s, average=0.004 s; distance=0 kB, estimate=0 kB; lsn=0/15A4648, redo lsn=0/15A45F0
+2025-09-14 18:55:55 NZST ERROR:  syntax error at or near "desc" at character 1
+2025-09-14 18:55:55 NZST STATEMENT:  desc postgres;
+2025-09-14 18:56:01 NZST ERROR:  syntax error at or near "describe" at character 1
+2025-09-14 18:56:01 NZST STATEMENT:  describe postgres;
+2025-09-14 18:56:09 NZST ERROR:  syntax error at or near "postgres" at character 1
+2025-09-14 18:56:09 NZST STATEMENT:  postgres;
+2025-09-14 19:07:42 NZST FATAL:  password authentication failed for user "iotuser"
+2025-09-14 19:07:42 NZST DETAIL:  Role "iotuser" does not exist.
+	Connection matched file "C:/Users/suvan/Documents/Codes/IOT-Sim-Dashboard/Database/pg_hba.conf" line 117: "host    all             all             ::1/128                 scram-sha-256"
+2025-09-14 19:09:16 NZST FATAL:  password authentication failed for user "iotuser"
+2025-09-14 19:09:16 NZST DETAIL:  Role "iotuser" does not exist.
+	Connection matched file "C:/Users/suvan/Documents/Codes/IOT-Sim-Dashboard/Database/pg_hba.conf" line 117: "host    all             all             ::1/128                 scram-sha-256"
+2025-09-14 19:10:01 NZST FATAL:  password authentication failed for user "iotuser"
+2025-09-14 19:10:01 NZST DETAIL:  Role "iotuser" does not exist.
+	Connection matched file "C:/Users/suvan/Documents/Codes/IOT-Sim-Dashboard/Database/pg_hba.conf" line 117: "host    all             all             ::1/128                 scram-sha-256"
+2025-09-14 19:12:51 NZST FATAL:  password authentication failed for user "iotuser"
+2025-09-14 19:12:51 NZST DETAIL:  Role "iotuser" does not exist.
+	Connection matched file "C:/Users/suvan/Documents/Codes/IOT-Sim-Dashboard/Database/pg_hba.conf" line 117: "host    all             all             ::1/128                 scram-sha-256"
+2025-09-14 19:13:49 NZST FATAL:  database "iotdb" does not exist
+2025-09-14 19:15:26 NZST WARNING:  there is no transaction in progress
+2025-09-14 19:17:05 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:18:02 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:18:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:20:25 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:20:30 NZST LOG:  checkpoint complete: wrote 994 buffers (6.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=107.767 s, sync=0.384 s, total=108.197 s; sync files=310, longest=0.004 s, average=0.002 s; distance=4701 kB, estimate=4701 kB; lsn=0/1A4C4A0, redo lsn=0/1A3BBA0
+2025-09-14 19:21:10 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:22:54 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:23:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:23:43 NZST LOG:  checkpoint complete: wrote 12 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.246 s, sync=0.029 s, total=1.313 s; sync files=8, longest=0.008 s, average=0.004 s; distance=141 kB, estimate=4245 kB; lsn=0/1A620B8, redo lsn=0/1A5F278
+2025-09-14 19:25:59 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:27:29 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:28:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:28:44 NZST LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.415 s, sync=0.010 s, total=1.457 s; sync files=7, longest=0.002 s, average=0.002 s; distance=141 kB, estimate=3835 kB; lsn=0/1A83930, redo lsn=0/1A82720
+2025-09-14 19:31:27 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:32:27 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:33:27 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:33:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:33:44 NZST LOG:  checkpoint complete: wrote 25 buffers (0.2%); 0 WAL file(s) added, 0 removed, 0 recycled; write=2.459 s, sync=0.037 s, total=2.551 s; sync files=9, longest=0.008 s, average=0.005 s; distance=141 kB, estimate=3465 kB; lsn=0/1AA6E90, redo lsn=0/1AA5BC8
+2025-09-14 19:33:52 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:34:26 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:35:27 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:36:27 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:36:34 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:36:59 NZST ERROR:  duplicate key value violates unique constraint "sensors_name_key"
+2025-09-14 19:36:59 NZST DETAIL:  Key (name)=(Temperature) already exists.
+2025-09-14 19:36:59 NZST STATEMENT:  INSERT INTO sensors (name, type, unit) VALUES
+	('Temperature', 'temperature', 'Â°C'),
+	('Humidity', 'humidity', '%'),
+	('Light', 'light', 'lx');
+2025-09-14 19:37:10 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:37:10 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:37:11 NZST FATAL:  database "iot_sim" does not exist
+2025-09-14 19:38:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:38:44 NZST LOG:  checkpoint complete: wrote 18 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.839 s, sync=0.038 s, total=1.910 s; sync files=11, longest=0.006 s, average=0.004 s; distance=136 kB, estimate=3132 kB; lsn=0/1ACB110, redo lsn=0/1AC7D68
+2025-09-14 19:41:09 NZST LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2025-09-14 19:43:42 NZST LOG:  checkpoint starting: time
+2025-09-14 19:43:44 NZST LOG:  checkpoint complete: wrote 14 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=1.421 s, sync=0.010 s, total=1.462 s; sync files=7, longest=0.002 s, average=0.002 s; distance=140 kB, estimate=2833 kB; lsn=0/1AEAE70, redo lsn=0/1AEAE18

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Simulation Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; }
+        .card { background-color: #fff; }
+        table { font-size: 1rem; }
+        th, td { text-align: center !important; vertical-align: middle !important; }
+        h1.main-title {
+            font-weight: 700;
+            color: #0d6efd;
+            text-shadow: 1px 1px #ccc;
+        }
+        h5 { margin: 0.2rem 0; }
+    </style>
+</head>
+<body>
+<div class="container py-4">
+
+    <!-- Attractive Heading -->
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="main-title display-4">🌐 IoT Simulation Dashboard</h1>
+            <p class="lead text-muted">Simulated Temperature, Humidity, and Light Sensor Readings</p>
+        </div>
+    </div>
+
+    <!-- Time and location -->
+    <div class="row mb-3">
+        <div class="col text-center">
+            <h5>Current Time: <span id="time">{{ current_time }}</span></h5>
+            <h5 id="location">Location: Detecting...</h5>
+        </div>
+    </div>
+
+    <!-- Sensor Table -->
+    <div class="row mb-4">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover bg-white" id="sensor-table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Sensor</th>
+                        <th scope="col">Latest Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sensor, value in readings.items() %}
+                    <tr>
+                        <td>{{ sensor }}</td>
+                        <td>{{ value|safe }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="row">
+        <div class="col">
+            <div class="card p-3 shadow-sm">
+                <h5>Notes:</h5>
+                <ul>
+                    <li><strong>°C</strong> – Temperature in degrees Celsius.</li>
+                    <li><strong>%</strong> – Relative Humidity. Calculated as the percentage of water vapor in air relative to the maximum it can hold at that temperature.</li>
+                    <li><strong>lx</strong> – Illuminance in lux (lumens per square meter).</li>
+                    <li>Humidity calculation: <em>Humidity = (actual water vapor / max possible water vapor at that temperature) × 100%</em></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JS -->
+<script>
+// Auto-update server time every second
+function updateTime() {
+    const timeElem = document.getElementById('time');
+    let current = new Date();
+    timeElem.innerText = current.toLocaleString();
+}
+setInterval(updateTime, 1000);
+
+// Browser geolocation + reverse geocoding
+async function reverseGeocode(lat, lon) {
+    try {
+        const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+        const response = await fetch(url, { headers: { 'User-Agent': 'IoT-Sim-Dashboard' } });
+        const data = await response.json();
+        const city = data.address.city || data.address.town || data.address.village || data.address.county || "Unknown";
+        const country = data.address.country || "";
+        document.getElementById('location').innerText = `Location: ${city}, ${country}`;
+    } catch (err) {
+        document.getElementById('location').innerText = `Location: Lat ${lat}, Lon ${lon}`;
+    }
+}
+
+function showPosition(position) {
+    const lat = position.coords.latitude.toFixed(4);
+    const lon = position.coords.longitude.toFixed(4);
+    reverseGeocode(lat, lon);
+}
+
+function showError(error) {
+    document.getElementById('location').innerText = "Location: Permission denied or unavailable";
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+    document.getElementById('location').innerText = "Location: Not supported by browser";
+}
+
+// Auto-refresh table every 5 seconds
+async function refreshTable() {
+    try {
+        const response = await fetch('/api/readings'); // Flask endpoint
+        const data = await response.json();
+        const tbody = document.querySelector('#sensor-table tbody');
+        tbody.innerHTML = '';
+        for (let sensor in data) {
+            const tr = document.createElement('tr');
+            const tdSensor = document.createElement('td');
+            tdSensor.innerText = sensor;
+            const tdValue = document.createElement('td');
+            tdValue.innerHTML = data[sensor]; // safe HTML
+            tr.appendChild(tdSensor);
+            tr.appendChild(tdValue);
+            tbody.appendChild(tr);
+        }
+    } catch (err) {
+        console.error("Error refreshing table:", err);
+    }
+}
+setInterval(refreshTable, 5000);
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
